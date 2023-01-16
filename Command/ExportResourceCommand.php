@@ -2,19 +2,16 @@
 
 namespace Hboie\JasperReportBundle\Command;
 
+use Hboie\JasperReportBundle\ImportExportService;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-use Hboie\JasperReportBundle\ImportExportService;
-
-use Jaspersoft\Dto\Resource\Resource;
-
 class ExportResourceCommand extends Command
 {
     /**
-     * @var ImportExportService $exportService
+     * @var ImportExportService
      */
     private $exportService;
 
@@ -38,23 +35,22 @@ class ExportResourceCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $uri = null;
-        $filename = "export";
+        $filename = 'export';
         $skipDependentResources = false;
 
-        if ( $input->getArgument('uri') != "" ) {
+        if ($input->getArgument('uri') !== '') {
             $uri = $input->getArgument('uri');
         } else {
             return Command::FAILURE;
         }
 
-        if ( $input->getArgument('filename') != "" ) {
+        if ($input->getArgument('filename') !== '') {
             $filename = $input->getArgument('filename');
         }
 
-        if ( $input->getArgument('skipDependentResources') == "true" ) {
+        if ($input->getArgument('skipDependentResources') === 'true') {
             $skipDependentResources = true;
         }
-
 
         $this->exportService->exportResource($uri, $filename, $skipDependentResources, 2, false);
 

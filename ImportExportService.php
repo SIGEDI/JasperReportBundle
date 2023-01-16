@@ -5,18 +5,16 @@ namespace Hboie\JasperReportBundle;
 use Jaspersoft\Dto\ImportExport\ExportTask;
 use Jaspersoft\Dto\ImportExport\ImportTask;
 use Jaspersoft\Dto\ImportExport\TaskState;
-use Symfony\Component\Filesystem\Filesystem;
 
 class ImportExportService
 {
     /**
-     * @var \Jaspersoft\Service\ReportService $jaserReportService
+     * @var \Jaspersoft\Service\ReportService
      */
     private $jasperImportExportService;
 
     /**
      * ImportExportService constructor.
-     * @param \Jaspersoft\Service\ImportExportService $importExportService
      */
     public function __construct(\Jaspersoft\Service\ImportExportService $importExportService)
     {
@@ -24,9 +22,8 @@ class ImportExportService
     }
 
     /**
-     * Begin an export task
+     * Begin an export task.
      *
-     * @param \Jaspersoft\Dto\ImportExport\ExportTask $exportTask
      * @return \Jaspersoft\Dto\ImportExport\TaskState
      */
     public function startExportTask(ExportTask $exportTask)
@@ -35,9 +32,10 @@ class ImportExportService
     }
 
     /**
-     * Retrieve the state of your export request
+     * Retrieve the state of your export request.
      *
      * @param int|string $id task ID
+     *
      * @return \Jaspersoft\Dto\ImportExport\TaskState
      */
     public function getExportState($id)
@@ -46,10 +44,10 @@ class ImportExportService
     }
 
     /**
-     * Begin an import task
+     * Begin an import task.
      *
-     * @param \Jaspersoft\Dto\Importexport\ImportTask $importTask
      * @param string $file_data Raw binary data of import zip
+     *
      * @return \Jaspersoft\Dto\ImportExport\TaskState
      */
     public function startImportTask(ImportTask $importTask, $file_data)
@@ -58,9 +56,10 @@ class ImportExportService
     }
 
     /**
-     * Obtain the state of an ongoing import task
+     * Obtain the state of an ongoing import task.
      *
      * @param int|string $id
+     *
      * @return \Jaspersoft\Dto\ImportExport\TaskState
      */
     public function getImportState($id)
@@ -69,38 +68,37 @@ class ImportExportService
     }
 
     /**
-     * export resource from jasper server
+     * export resource from jasper server.
      *
-     * @param $uri
      * @param string $filename
-     * @param boolean $skipDependentResources
-     * @param int $refreshSec
+     * @param bool   $skipDependentResources
+     * @param int    $refreshSec
      */
-    public function exportResource($uri, $filename = "export", $skipDependentResources = false,
+    public function exportResource($uri, $filename = 'export', $skipDependentResources = false,
                                    $refreshSec = 3, $silent = true)
     {
         /** @var ExportTask $exportTask */
         $exportTask = new ExportTask();
 
-        array_push($exportTask->uris, $uri );
+        array_push($exportTask->uris, $uri);
 
-        if ( $skipDependentResources ) {
-            array_push($exportTask->parameters, "skip-dependent-resources" );
+        if ($skipDependentResources) {
+            array_push($exportTask->parameters, 'skip-dependent-resources');
         }
 
         /** @var TaskState $taskState */
         $taskState = $this->jasperImportExportService->startExportTask($exportTask);
 
-        if ( ! $silent ) {
-            echo $taskState->message . "\n";
+        if (!$silent) {
+            echo $taskState->message."\n";
         }
 
         $decline = true;
         while ($decline) {
             $taskState = $this->jasperImportExportService->getExportState($taskState->id);
-            if ($taskState->phase == "finished") {
-                if ( ! $silent ) {
-                    echo $taskState->message . "\n";
+            if ($taskState->phase === 'finished') {
+                if (!$silent) {
+                    echo $taskState->message."\n";
                 }
                 $decline = false;
             } else {
@@ -111,7 +109,7 @@ class ImportExportService
         $exportFilename = $filename;
         $ext = pathinfo($exportFilename, PATHINFO_EXTENSION);
 
-        if ( $ext != 'zip') {
+        if ($ext !== 'zip') {
             $exportFilename .= '.zip';
         }
 
@@ -122,13 +120,13 @@ class ImportExportService
     }
 
     /**
-     * import resource from file to jasper server
+     * import resource from file to jasper server.
      *
      * @param string $filename
-     * @param bool $includebrokenDependencies
-     * @param int $refreshSec
+     * @param bool   $includebrokenDependencies
+     * @param int    $refreshSec
      */
-    public function importResource($filename = "export", $includebrokenDependencies = false,
+    public function importResource($filename = 'export', $includebrokenDependencies = false,
                                    $refreshSec = 3, $silent = true)
     {
         /** @var ImportTask $importTask */
@@ -140,23 +138,23 @@ class ImportExportService
         $importTask->includeMonitoringEvents = false;
         $importTask->includeServerSettings = false;
 
-        if ( $includebrokenDependencies ) {
-            $importTask->brokenDependencies = "include";
+        if ($includebrokenDependencies) {
+            $importTask->brokenDependencies = 'include';
         }
 
         /** @var TaskState $taskState */
         $taskState = $this->jasperImportExportService->startImportTask($importTask, file_get_contents($filename));
 
-        if ( ! $silent ) {
-            echo $taskState->message . "\n";
+        if (!$silent) {
+            echo $taskState->message."\n";
         }
 
         $decline = true;
         while ($decline) {
             $taskState = $this->jasperImportExportService->getImportState($taskState->id);
-            if ($taskState->phase == "finished") {
-                if ( ! $silent ) {
-                    echo $taskState->message . "\n";
+            if ($taskState->phase === 'finished') {
+                if (!$silent) {
+                    echo $taskState->message."\n";
                 }
                 $decline = false;
             } else {

@@ -3,29 +3,26 @@
 namespace Hboie\JasperReportBundle;
 
 use Jaspersoft\Client\Client;
-use Hboie\JasperReportBundle\ReportService;
-use Hboie\JasperReportBundle\ImportExportService;
-use Hboie\JasperReportBundle\RepositoryService;
 
 class Factory
 {
     /**
-     * @var Client $reportClient
+     * @var Client
      */
     private $reportClient;
 
     /**
-     * @var ReportService $reportService
+     * @var ReportService
      */
     private $reportService;
 
     /**
-     * @var ImportExportService $importExportService
+     * @var ImportExportService
      */
     private $importExportService;
 
     /**
-     * @var RepositoryService $repositoryService
+     * @var RepositoryService
      */
     private $repositoryService;
 
@@ -38,10 +35,10 @@ class Factory
 
         $this->reportClient = new Client($server_url, $username, $password, $org_id);
 
-        if ( isset($config['timeout']) ) {
+        if (isset($config['timeout'])) {
             $timeout = intval($config['timeout']);
-            if ( is_numeric($config['timeout']) && $timeout > 0 ) {
-                $this->reportClient->setRequestTimeout( $timeout );
+            if (is_numeric($config['timeout']) && $timeout > 0) {
+                $this->reportClient->setRequestTimeout($timeout);
             }
         }
     }
@@ -55,44 +52,44 @@ class Factory
     }
 
     /**
-     * get report-service
+     * get report-service.
      *
      * @return \Hboie\JasperReportBundle\ReportService
      */
     public function getReportService()
     {
-        if ( ! isset( $this->reportService ) )
-        {
-            $this->reportService = new ReportService( $this->reportClient->reportService() );
+        if (!isset($this->reportService)) {
+            $this->reportService = new ReportService($this->reportClient->reportService());
         }
+
         return $this->reportService;
     }
 
     /**
-     * get export-/import-service
+     * get export-/import-service.
      *
      * @return \Hboie\JasperReportBundle\ImportExportService
      */
     public function getImportExportService()
     {
-        if ( ! isset( $this->importExportService ) )
-        {
-            $this->importExportService = new ImportExportService( $this->reportClient->importExportService() );
+        if (!isset($this->importExportService)) {
+            $this->importExportService = new ImportExportService($this->reportClient->importExportService());
         }
+
         return $this->importExportService;
     }
 
     /**
-     * get repository service
+     * get repository service.
      *
      * @return \Hboie\JasperReportBundle\RepositoryService
      */
     public function getRepositoryService()
     {
-        if ( ! isset( $this->repositoryService ) )
-        {
-            $this->repositoryService = new RepositoryService( $this->reportClient->repositoryService() );
+        if (!isset($this->repositoryService)) {
+            $this->repositoryService = new RepositoryService($this->reportClient->repositoryService());
         }
+
         return $this->repositoryService;
     }
 }

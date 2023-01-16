@@ -2,19 +2,16 @@
 
 namespace Hboie\JasperReportBundle\Command;
 
+use Hboie\JasperReportBundle\ImportExportService;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-use Hboie\JasperReportBundle\ImportExportService;
-
-use Jaspersoft\Dto\Resource\Resource;
-
 class ImportResourceCommand extends Command
 {
     /**
-     * @var ImportExportService $importService
+     * @var ImportExportService
      */
     private $importService;
 
@@ -39,13 +36,13 @@ class ImportResourceCommand extends Command
         $filename = null;
         $includebrokenDependencies = false;
 
-        if ( $input->getArgument('filename') != "" ) {
+        if ($input->getArgument('filename') !== '') {
             $filename = $input->getArgument('filename');
         } else {
             return Command::FAILURE;
         }
 
-        if ( $input->getArgument('includebrokenDependencies') == "true" ) {
+        if ($input->getArgument('includebrokenDependencies') === 'true') {
             $includebrokenDependencies = true;
         }
 
