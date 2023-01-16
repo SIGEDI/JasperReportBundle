@@ -68,10 +68,11 @@ The bundle supports autowiring, so you can access the report-service directly in
     composer require hboie/jasper_report_bundle
 ```
 2 Register bundle in <code>app/AppKernel.php</code>:
+
 ```php
     $bundle = [
             ...
-    new Hboie\JasperReportBundle\HboieJasperReportBundle(),
+    new Sigedi\JasperReportBundle\JasperReportBundle(),
             ...
     ];
 ```
