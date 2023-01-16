@@ -1,6 +1,6 @@
 <?php
 
-namespace Hboie\JasperReportBundle\DependencyInjection;
+namespace Sigedi\JasperReportBundleDependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -12,7 +12,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
  *
  * @see http://symfony.com/doc/current/cookbook/bundles/extension.html
  */
-class HboieJasperReportExtension extends Extension
+class SigediJasperReportExtension extends Extension
 {
     /**
      * {@inheritdoc}

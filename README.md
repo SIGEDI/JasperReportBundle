@@ -16,7 +16,7 @@ The JasperReportBundle requires jaspersoft/rest-client and provides an JasperRep
 
 1 Add bundle to <code>composer.json</code>:
 ```shel
-    composer require hboie/jasper_report_bundle
+    composer require sigedi/jasper_report_bundle
 ```
 2 The Bundle will be registred automatically and by executing the recipe the configuration 
 file <code>jasper-report.yaml</code>
@@ -26,19 +26,19 @@ in the <code>.env</code> file will be made
 3 Change the standard setting in the file <code>jasper-report.yaml</code>
 
 ```yml
-    hboie_jasper_report:
+    sigedi_jasper_report:
         host:      'http://localhost:8080/jasperserver'
-        username:  '%env(HBOIE_JASPER_REPORT_USERNAME)%'
-        password:  '%env(HBOIE_JASPER_REPORT_PASSWORD)%'
-        org_id:    '%env(HBOIE_JASPER_REPORT_ORGID)%'
+        username:  '%env(SIGEDI_JASPER_REPORT_USERNAME)%'
+        password:  '%env(SIGEDI_JASPER_REPORT_PASSWORD)%'
+        org_id:    '%env(SIGEDI_JASPER_REPORT_ORGID)%'
 ```
 
 and in the <code>.env</code> file
 
 ```
-HBOIE_JASPER_REPORT_USERNAME=jasperadmin
-HBOIE_JASPER_REPORT_PASSWORD=jasperadmin
-HBOIE_JASPER_REPORT_ORGID=
+SIGEDI_JASPER_REPORT_USERNAME=jasperadmin
+SIGEDI_JASPER_REPORT_PASSWORD=jasperadmin
+SIGEDI_JASPER_REPORT_ORGID=
 ```
 
 ## <a name="basic_usage_4_5"></a>Basic Usage in Symfony 4 / 5
@@ -46,7 +46,7 @@ HBOIE_JASPER_REPORT_ORGID=
 The bundle supports autowiring, so you can access the report-service directly in your controller, e.g.
 ```php
     use Symfony\Component\HttpFoundation\Request;
-    use Hboie\JasperReportBundle\ReportService;
+    use Sigedi\JasperReportBundleReportService;
 
     public function reportAction(Request $request, ReportService $reportService)
     {
@@ -65,19 +65,20 @@ The bundle supports autowiring, so you can access the report-service directly in
 
 1 Add bundle to <code>composer.json</code>:
 ```shel
-    composer require hboie/jasper_report_bundle
+    composer require sigedi/jasper_report_bundle
 ```
 2 Register bundle in <code>app/AppKernel.php</code>:
+
 ```php
     $bundle = [
             ...
-    new Hboie\JasperReportBundle\HboieJasperReportBundle(),
+    new Sigedi\JasperReportBundle\JasperReportBundle(),
             ...
     ];
 ```
 3 Add parameter to <code>app/config/config.yml</code>
 ```yml
-    hboie_jasper_report:
+    sigedi_jasper_report:
         host:      "%jasper_host%"
         username:  "%jasper_user%"
         password:  "%jasper_password%"
@@ -194,11 +195,11 @@ Restart the JasperServer application or reboot the server
 ## <a name="configuration"></a>Additional Configuration Options
 
 ```yml
-    hboie_jasper_report:
+    sigedi_jasper_report:
         host:      'http://localhost:8080/jasperserver'
-        username:  '%env(HBOIE_JASPER_REPORT_USERNAME)%'
-        password:  '%env(HBOIE_JASPER_REPORT_PASSWORD)%'
-        org_id:    '%env(HBOIE_JASPER_REPORT_ORGID)%'
+        username:  '%env(SIGEDI_JASPER_REPORT_USERNAME)%'
+        password:  '%env(SIGEDI_JASPER_REPORT_PASSWORD)%'
+        org_id:    '%env(SIGEDI_JASPER_REPORT_ORGID)%'
         timeout:   50
 ```
 

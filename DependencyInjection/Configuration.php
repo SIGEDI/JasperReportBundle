@@ -1,6 +1,6 @@
 <?php
 
-namespace Hboie\JasperReportBundle\DependencyInjection;
+namespace Sigedi\JasperReportBundleDependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -17,13 +17,13 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder('hboie_jasper_report');
+        $treeBuilder = new TreeBuilder('sigedi_jasper_report');
 
         if (method_exists($treeBuilder, 'getRootNode')) {
             $rootNode = $treeBuilder->getRootNode();
         } else {
             // BC layer for symfony/config 4.1 and older
-            $rootNode = $treeBuilder->root('hboie_jasper_report');
+            $rootNode = $treeBuilder->root('sigedi_jasper_report');
         }
 
         $rootNode

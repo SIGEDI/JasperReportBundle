@@ -1,6 +1,6 @@
 <?php
 
-namespace Hboie\JasperReportBundle;
+namespace Sigedi\JasperReportBundle;
 
 use Jaspersoft\Client\Client;
 
@@ -54,7 +54,7 @@ class Factory
     /**
      * get report-service.
      *
-     * @return \Hboie\JasperReportBundle\ReportService
+     * @return \Sigedi\JasperReportBundleReportService
      */
     public function getReportService()
     {
@@ -68,7 +68,7 @@ class Factory
     /**
      * get export-/import-service.
      *
-     * @return \Hboie\JasperReportBundle\ImportExportService
+     * @return \Sigedi\JasperReportBundleImportExportService
      */
     public function getImportExportService()
     {
@@ -82,7 +82,7 @@ class Factory
     /**
      * get repository service.
      *
-     * @return \Hboie\JasperReportBundle\RepositoryService
+     * @return \Sigedi\JasperReportBundleRepositoryService
      */
     public function getRepositoryService()
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Hboie\JasperReportBundle;
+namespace Sigedi\JasperReportBundle;
 
 class ReportService
 {

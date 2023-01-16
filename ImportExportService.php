@@ -1,6 +1,6 @@
 <?php
 
-namespace Hboie\JasperReportBundle;
+namespace Sigedi\JasperReportBundle;
 
 use Jaspersoft\Dto\ImportExport\ExportTask;
 use Jaspersoft\Dto\ImportExport\ImportTask;

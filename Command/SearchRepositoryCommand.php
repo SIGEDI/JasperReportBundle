@@ -1,8 +1,7 @@
 <?php
 
-namespace Hboie\JasperReportBundle\Command;
+namespace Sigedi\JasperReportBundleCommand;
 
-use Hboie\JasperReportBundle\RepositoryService;
 use Jaspersoft\Dto\Resource\ResourceLookup;
 use Jaspersoft\Service\Criteria\RepositorySearchCriteria;
 use Jaspersoft\Service\Result\SearchResourcesResult;
