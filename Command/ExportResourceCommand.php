@@ -1,7 +1,8 @@
 <?php
 
-namespace Sigedi\JasperReportBundleCommand;
+namespace Sigedi\JasperReportBundle\Command;
 
+use Sigedi\JasperReportBundle\ImportExportService;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -20,7 +21,7 @@ class ExportResourceCommand extends Command
         parent::__construct();
     }
 
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('jasper:export:resource')
@@ -31,7 +32,7 @@ class ExportResourceCommand extends Command
                 'skip dependent resources, e.g. database connection');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $uri = null;
         $filename = 'export';

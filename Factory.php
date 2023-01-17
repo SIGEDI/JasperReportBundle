@@ -26,7 +26,7 @@ class Factory
      */
     private $repositoryService;
 
-    public function createClient($config)
+    public function createClient($config): void
     {
         $server_url = $config['host'];
         $username = $config['username'];
@@ -43,20 +43,15 @@ class Factory
         }
     }
 
-    /**
-     * @return Client
-     */
-    public function getClient()
+    public function getClient(): Client
     {
         return $this->reportClient;
     }
 
     /**
      * get report-service.
-     *
-     * @return \Sigedi\JasperReportBundleReportService
      */
-    public function getReportService()
+    public function getReportService(): ReportService
     {
         if (!isset($this->reportService)) {
             $this->reportService = new ReportService($this->reportClient->reportService());
@@ -67,10 +62,8 @@ class Factory
 
     /**
      * get export-/import-service.
-     *
-     * @return \Sigedi\JasperReportBundleImportExportService
      */
-    public function getImportExportService()
+    public function getImportExportService(): ImportExportService
     {
         if (!isset($this->importExportService)) {
             $this->importExportService = new ImportExportService($this->reportClient->importExportService());
@@ -81,10 +74,8 @@ class Factory
 
     /**
      * get repository service.
-     *
-     * @return \Sigedi\JasperReportBundleRepositoryService
      */
-    public function getRepositoryService()
+    public function getRepositoryService(): RepositoryService
     {
         if (!isset($this->repositoryService)) {
             $this->repositoryService = new RepositoryService($this->reportClient->repositoryService());

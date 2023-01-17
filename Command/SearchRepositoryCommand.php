@@ -1,10 +1,11 @@
 <?php
 
-namespace Sigedi\JasperReportBundleCommand;
+namespace Sigedi\JasperReportBundle\Command;
 
 use Jaspersoft\Dto\Resource\ResourceLookup;
 use Jaspersoft\Service\Criteria\RepositorySearchCriteria;
 use Jaspersoft\Service\Result\SearchResourcesResult;
+use Sigedi\JasperReportBundle\RepositoryService;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -23,7 +24,7 @@ class SearchRepositoryCommand extends Command
         parent::__construct();
     }
 
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('jasper:repository:search')
@@ -32,7 +33,7 @@ class SearchRepositoryCommand extends Command
             ->addArgument('detail', InputArgument::OPTIONAL, 'show full details');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $criteria = null;
 

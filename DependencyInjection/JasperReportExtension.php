@@ -1,6 +1,6 @@
 <?php
 
-namespace Sigedi\JasperReportBundleDependencyInjection;
+namespace Sigedi\JasperReportBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -12,12 +12,14 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
  *
  * @see http://symfony.com/doc/current/cookbook/bundles/extension.html
  */
-class SigediJasperReportExtension extends Extension
+class JasperReportExtension extends Extension
 {
     /**
      * {@inheritdoc}
+     *
+     * @throws \Exception
      */
-    public function load(array $configs, ContainerBuilder $container)
+    public function load(array $configs, ContainerBuilder $container): void
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);

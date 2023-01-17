@@ -2,6 +2,11 @@
 
 namespace Sigedi\JasperReportBundle;
 
+use Jaspersoft\Dto\Resource\File;
+use Jaspersoft\Dto\Resource\Resource;
+use Jaspersoft\Service\Criteria\RepositorySearchCriteria;
+use Jaspersoft\Service\Result\SearchResourcesResult;
+
 class RepositoryService
 {
     /**
@@ -19,12 +24,8 @@ class RepositoryService
 
     /**
      * Search repository by criteria.
-     *
-     * @param \Jaspersoft\Service\Criteria\RepositorySearchCriteria $criteria
-     *
-     * @return \Jaspersoft\Service\Result\SearchResourcesResult
      */
-    public function searchResources(\Jaspersoft\Service\Criteria\RepositorySearchCriteria $criteria = null)
+    public function searchResources(RepositorySearchCriteria $criteria = null): SearchResourcesResult
     {
         return $this->jaserRepositoryService->searchResources($criteria);
     }
@@ -32,22 +33,17 @@ class RepositoryService
     /**
      * Get resource by URI.
      *
-     * @param string $uri
-     * @param bool   $expanded Return subresources as definitions and not references?
-     *
-     * @return \Jaspersoft\Dto\Resource\Resource
+     * @param bool $expanded Return sub resources as definitions and not references?
      */
-    public function getResource($uri, $expanded = false)
+    public function getResource(string $uri, bool $expanded = false): Resource
     {
         return $this->jaserRepositoryService->getResource($uri, $expanded);
     }
 
     /**
      * Obtain the raw binary data of a file resource stored on the server (e.x: image).
-     *
-     * @return string
      */
-    public function getBinaryFileData(\Jaspersoft\Dto\Resource\File $file)
+    public function getBinaryFileData(File $file): string
     {
         return $this->jaserRepositoryService->getBinaryFileData($file);
     }
@@ -58,15 +54,13 @@ class RepositoryService
      * Note: Resources can be placed at arbitrary locations, or in a folder. Thus, you must set EITHER $parentFolder
      * OR the uri parameter of the Resource used in the first argument.
      *
-     * @param \Jaspersoft\Dto\Resource\Resource $resource      Resource object fully describing new resource
-     * @param string                            $parentFolder  folder in which the resource should be created
-     * @param bool                              $createFolders Create folders in the path that may not exist?
+     * @param resource    $resource      Resource object fully describing new resource
+     * @param string|null $parentFolder  folder in which the resource should be created
+     * @param bool        $createFolders Create folders in the path that may not exist?
      *
-     * @throws \Exception
-     *
-     * @return \Jaspersoft\Dto\Resource\Resource
+     *@throws \Exception
      */
-    public function createResource(\Jaspersoft\Dto\Resource\Resource $resource, $parentFolder = null, $createFolders = true)
+    public function createResource(Resource $resource, string $parentFolder = null, bool $createFolders = true): Resource
     {
         return $this->jaserRepositoryService->createResource($resource, $parentFolder, $createFolders);
     }
@@ -74,12 +68,10 @@ class RepositoryService
     /**
      * Update a resource.
      *
-     * @param \Jaspersoft\Dto\Resource\Resource $resource  Resource object fully describing updated resource
-     * @param bool                              $overwrite Replace existing resource even if type differs?
-     *
-     * @return \Jaspersoft\Dto\Resource\Resource
+     * @param resource $resource  Resource object fully describing updated resource
+     * @param bool     $overwrite Replace existing resource even if type differs?
      */
-    public function updateResource(\Jaspersoft\Dto\Resource\Resource $resource, $overwrite = false)
+    public function updateResource(Resource $resource, bool $overwrite = false): Resource
     {
         return $this->jaserRepositoryService->updateResource($resource, $overwrite);
     }
@@ -87,12 +79,10 @@ class RepositoryService
     /**
      * Update a file on the server by supplying binary data.
      *
-     * @param \Jaspersoft\Dto\Resource\File $resource   A resource descriptor for the File
-     * @param string                        $binaryData The binary data of the file to update
-     *
-     * @return \Jaspersoft\Dto\Resource\Resource
+     * @param File   $resource   A resource descriptor for the File
+     * @param string $binaryData The binary data of the file to update
      */
-    public function updateFileResource(\Jaspersoft\Dto\Resource\File $resource, $binaryData)
+    public function updateFileResource(File $resource, string $binaryData): Resource
     {
         return $this->jaserRepositoryService->updateFileResource($resource, $binaryData);
     }
