@@ -7,7 +7,7 @@
     <services>
         <service
                 id="jasperreport.factory"
-                class="Sigedi\JasperReportBundleFactory"
+                class="Sigedi\JasperReportBundle\Factory"
                 shared="false">
         </service>
 
@@ -20,42 +20,42 @@
 
         <service
                 id="jasperreport.reportservice"
-                class="Sigedi\JasperReportBundleReportService"
+                class="Sigedi\JasperReportBundle\ReportService"
                 shared="true">
             <factory service="jasperreport.factory" method="getReportService"/>
         </service>
 
-        <service id="Sigedi\JasperReportBundleReportService" alias="jasperreport.reportservice" />
+        <service id="Sigedi\JasperReportBundle\ReportService" alias="jasperreport.reportservice" />
 
         <service
                 id="jasperreport.importexportservice"
-                class="Sigedi\JasperReportBundleImportExportService"
+                class="Sigedi\JasperReportBundle\ImportExportService"
                 shared="true">
             <factory service="jasperreport.factory" method="getImportExportService"/>
         </service>
 
-        <service id="Sigedi\JasperReportBundleImportExportService" alias="jasperreport.importexportservice" />
+        <service id="Sigedi\JasperReportBundle\ImportExportService" alias="jasperreport.importexportservice" />
 
         <service
                 id="jasperreport.repositoryservice"
-                class="Sigedi\JasperReportBundleRepositoryService"
+                class="Sigedi\JasperReportBundle\RepositoryService"
                 shared="true">
             <factory service="jasperreport.factory" method="getRepositoryService"/>
         </service>
 
-        <service id="Sigedi\JasperReportBundleRepositoryService" alias="jasperreport.repositoryservice" />
+        <service id="Sigedi\JasperReportBundle\RepositoryService" alias="jasperreport.repositoryservice" />
 
-        <service id="Sigedi\JasperReportBundleCommand\SearchRepositoryCommand">
+        <service id="Sigedi\JasperReportBundle\Command\SearchRepositoryCommand">
             <argument type="service" id="jasperreport.repositoryservice" />
             <tag name="console.command"/>
         </service>
 
-        <service id="Sigedi\JasperReportBundleCommand\ExportResourceCommand">
+        <service id="Sigedi\JasperReportBundle\Command\ExportResourceCommand">
             <argument type="service" id="jasperreport.importexportservice" />
             <tag name="console.command"/>
         </service>
 
-        <service id="Sigedi\JasperReportBundleCommand\ImportResourceCommand">
+        <service id="Sigedi\JasperReportBundle\Command\ImportResourceCommand">
             <argument type="service" id="jasperreport.importexportservice" />
             <tag name="console.command"/>
         </service>
