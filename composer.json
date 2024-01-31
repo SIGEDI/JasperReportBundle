@@ -16,7 +16,7 @@
     "ext-zip": "*",
     "symfony/framework-bundle": "~6.0|~7.0",
     "symfony/filesystem": "~6.0|~7.0",
-    "sigedi/jasper-rest-client": "dev-dev-main"
+    "sigedi/jasper-rest-client": "*"
   },
   "autoload": {
     "psr-4": {
