@@ -5,7 +5,7 @@
   "authors": [
     {
       "name": "SIGEDI",
-      "email": "dev@sigedi.fr"
+      "email": "dev.info@sigedi.fr"
     }
   ],
   "keywords": ["REST", "JasperReport", "symfony6", "symfony7", "bundle"],
