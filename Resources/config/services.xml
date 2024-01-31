@@ -26,14 +26,5 @@
         </service>
 
         <service id="Sigedi\JasperReportBundle\ReportService" alias="jasperreport.reportservice" />
-
-        <service
-                id="jasperreport.repositoryservice"
-                class="Sigedi\JasperReportBundle\RepositoryService"
-                shared="true">
-            <factory service="jasperreport.factory" method="getRepositoryService"/>
-        </service>
-
-        <service id="Sigedi\JasperReportBundle\RepositoryService" alias="jasperreport.repositoryservice" />
     </services>
 </container>
