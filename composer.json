@@ -1,21 +1,21 @@
 {
   "name": "sigedi/jasper-report-bundle",
-  "description": "Symfony 5-6 / Symfony Flex Bundle integrating the Jaspersoft REST v2 client (jaspersoft/rest-client)",
+  "description": "Symfony 6 / Symfony Flex Bundle integrating the Jaspersoft REST v2 client (jaspersoft/rest-client)",
   "type": "symfony-bundle",
   "authors": [
     {
       "name": "SIGEDI",
-      "email": "dev@sigedi.fr"
+      "email": "dev.info@sigedi.fr"
     }
   ],
-  "keywords": ["REST", "JasperReport", "symfony5", "symfony6", "bundle"],
+  "keywords": ["REST", "JasperReport", "symfony6", "symfony7", "bundle"],
   "homepage": "https://github.com/SIGEDI/JasperReportBundle",
   "license": "MIT",
   "require": {
-    "php": ">=7.1",
+    "php": ">=8.1",
     "ext-zip": "*",
-    "symfony/framework-bundle": "~5.0|~6.0",
-    "symfony/filesystem": ">=2.6",
+    "symfony/framework-bundle": "~6.0|~7.0",
+    "symfony/filesystem": "~6.0|~7.0",
     "sigedi/jasper-rest-client": "*"
   },
   "autoload": {

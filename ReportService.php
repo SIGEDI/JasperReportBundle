@@ -1,18 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Sigedi\JasperReportBundle;
+
+use Jaspersoft\Service\ReportService as JasperReportService;
 
 class ReportService
 {
-    /**
-     * @var \Jaspersoft\Service\ReportService
-     */
-    private $jaserReportService;
+    private JasperReportService $jaserReportService;
 
     /**
      * ReportService constructor.
      */
-    public function __construct(\Jaspersoft\Service\ReportService $reportService)
+    public function __construct(JasperReportService $reportService)
     {
         $this->jaserReportService = $reportService;
     }
@@ -36,18 +37,26 @@ class ReportService
     public function runReport(
         string $uri,
         string $format = 'pdf',
-        string $pages = null,
-        string $attachmentsPrefix = null,
-        array $inputControls = null,
+        ?string $pages = null,
+        ?string $attachmentsPrefix = null,
+        ?array $inputControls = null,
         bool $interactive = true,
         bool $onePagePerSheet = false,
         bool $freshData = true,
         bool $saveDataSnapshot = false,
-        string $transformerKey = null
+        ?string $transformerKey = null
     ): string {
         return $this->jaserReportService->runReport(
-            $uri, $format, $pages, $attachmentsPrefix, $inputControls,
-            $interactive, $onePagePerSheet, $freshData, $saveDataSnapshot, $transformerKey
+            $uri,
+            $format,
+            $pages,
+            $attachmentsPrefix,
+            $inputControls,
+            $interactive,
+            $onePagePerSheet,
+            $freshData,
+            $saveDataSnapshot,
+            $transformerKey
         );
     }
 

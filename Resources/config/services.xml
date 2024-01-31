@@ -26,39 +26,5 @@
         </service>
 
         <service id="Sigedi\JasperReportBundle\ReportService" alias="jasperreport.reportservice" />
-
-        <service
-                id="jasperreport.importexportservice"
-                class="Sigedi\JasperReportBundle\ImportExportService"
-                shared="true">
-            <factory service="jasperreport.factory" method="getImportExportService"/>
-        </service>
-
-        <service id="Sigedi\JasperReportBundle\ImportExportService" alias="jasperreport.importexportservice" />
-
-        <service
-                id="jasperreport.repositoryservice"
-                class="Sigedi\JasperReportBundle\RepositoryService"
-                shared="true">
-            <factory service="jasperreport.factory" method="getRepositoryService"/>
-        </service>
-
-        <service id="Sigedi\JasperReportBundle\RepositoryService" alias="jasperreport.repositoryservice" />
-
-        <service id="Sigedi\JasperReportBundle\Command\SearchRepositoryCommand">
-            <argument type="service" id="jasperreport.repositoryservice" />
-            <tag name="console.command"/>
-        </service>
-
-        <service id="Sigedi\JasperReportBundle\Command\ExportResourceCommand">
-            <argument type="service" id="jasperreport.importexportservice" />
-            <tag name="console.command"/>
-        </service>
-
-        <service id="Sigedi\JasperReportBundle\Command\ImportResourceCommand">
-            <argument type="service" id="jasperreport.importexportservice" />
-            <tag name="console.command"/>
-        </service>
-
     </services>
 </container>
