@@ -12,8 +12,6 @@ class Factory
 
     private ReportService $reportService;
 
-    private RepositoryService $repositoryService;
-
     public function createClient($config): void
     {
         $server_url = $config['host'];
@@ -46,17 +44,5 @@ class Factory
         }
 
         return $this->reportService;
-    }
-
-    /**
-     * get repository service.
-     */
-    public function getRepositoryService(): RepositoryService
-    {
-        if (!isset($this->repositoryService)) {
-            $this->repositoryService = new RepositoryService($this->reportClient->repositoryService());
-        }
-
-        return $this->repositoryService;
     }
 }
