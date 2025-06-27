@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Sigedi\JasperReportBundle\DependencyInjection;
+namespace Sigedi\JasperReportBundle\DependencyInjection\Extension;
 
 use Exception;
+use Sigedi\JasperReportBundle\DependencyInjection\Configuration;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
