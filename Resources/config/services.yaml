@@ -1,0 +1,17 @@
+services:
+    jasperreport.factory:
+        class: Sigedi\JasperReportBundle\Factory
+        shared: false
+
+    jasperreport.client:
+        class: Jaspersoft\Client\Client
+        shared: true
+        factory: ['@jasperreport.factory', 'getClient']
+
+    jasperreport.reportservice:
+        class: Sigedi\JasperReportBundle\ReportService
+        shared: true
+        factory: ['@jasperreport.factory', 'getReportService']
+
+    Sigedi\JasperReportBundle\ReportService:
+        alias: jasperreport.reportservice
